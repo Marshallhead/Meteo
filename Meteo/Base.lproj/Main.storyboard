@@ -32,8 +32,11 @@
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <state key="normal" backgroundImage="location.circle.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="locationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wcc-hg-jgS"/>
+                                                </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="DVn-Ml-UcK">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="DVn-Ml-UcK" userLabel="Search Text Field">
                                                 <rect key="frame" x="48" y="0.0" width="274" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="274" id="OM8-k0-dGI"/>
@@ -49,6 +52,9 @@
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
+                                                <connections>
+                                                    <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rYV-Z1-asE"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -108,6 +114,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="CityLabel" destination="9Qf-eP-6B6" id="Agc-1G-M42"/>
+                        <outlet property="ConditionImageView" destination="sWu-Sc-TYc" id="feX-hr-g4V"/>
+                        <outlet property="SearchTextField" destination="DVn-Ml-UcK" id="WwW-Lb-CLd"/>
+                        <outlet property="TemperatureLabel" destination="aNr-xd-HkT" id="C0s-9d-zFq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
