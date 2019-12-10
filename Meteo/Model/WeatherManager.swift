@@ -23,16 +23,16 @@ struct WeatherManager {
         if let url = URL(string: urlString) {
             //2. CREATE A URL SESSION
             
-            let session = URLSession(configuration: .default)
+            let session = URLSession(configuration: .default)// URLSession is like a browser, its what does the networking
             
             //3. GIVE URLSession a task
-            let task = session.dataTask(with: url) { (data, response, error) in
+            let task = session.dataTask(with: url) { (data, response, error) in//session retrieves contents of the URL
                 if error != nil {
                     print(error!)
                     return
                 }
-                if let safeData = data {
-                    self.parseJSON(weatherData: safeData)// utf8 a standardized protocol for encoding text in websites
+                if let safeData = data {//safedata to unwrap the data got from the session
+                    self.parseJSON(weatherData: safeData)// parseJSON to decode the JavaScriptObjectNotation data into swift
                 }
             }
             //4. START TASK
@@ -45,12 +45,19 @@ struct WeatherManager {
         
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-            print(decodedData.weather[0].description)
+            let decodedData = try decoder.decode(WeatherData.self/*.self allow to specify the dataType*/, from: weatherData)
+            //print(decodedData.weather[0].id)
+            let id = decodedData.weather[0].id
+            let temp = decodedData.main.temp
+            let name = decodedData.name
+            
+            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)// weather object to get data used to populate UI in SFsymbol image based on Id, change cityLabel and temp label
+            print(weather.conditionName)
         } catch {
             print(error)
         }
     }
+
+    }
     
-    
-}
+

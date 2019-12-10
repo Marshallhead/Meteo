@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WeatherData: Decodable {
+struct WeatherData: Decodable {//Dwcodable means the weather data can adopt protocol to interpree JSON data from external sources
     
     var name: String
     let main: Main
@@ -20,5 +20,6 @@ struct Main: Decodable {
 }
 
 struct Weather: Decodable {
+    let id: Int
     let description: String
 }
