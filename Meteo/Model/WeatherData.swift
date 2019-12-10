@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct WeatherData: Decodable {//Dwcodable means the weather data can adopt protocol to interpree JSON data from external sources
+struct WeatherData: Codable {//codable means the weather data can adopt codable protocol to interprete(decode/encode) JSON data from external sources
     
     var name: String
     let main: Main
     var weather: [Weather]
 }
 
-struct Main: Decodable {
+struct Main: Codable {
     let temp: Double
 }
 
-struct Weather: Decodable {
+struct Weather: Codable {
     let id: Int
     let description: String
 }

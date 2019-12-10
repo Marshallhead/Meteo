@@ -8,11 +8,11 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITextFieldDelegate { // allows validation of text in textfield
+class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate { //UITextfieldDelegate allows validation of text in textfield
 
-    @IBOutlet weak var ConditionImageView: UIImageView!
-    @IBOutlet weak var TemperatureLabel: UILabel!
-    @IBOutlet weak var CityLabel: UILabel!
+    @IBOutlet weak var conditionImageView: UIImageView!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
     
     
     @IBOutlet weak var SearchTextField: UITextField!
@@ -22,6 +22,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate { // allows v
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        weatherManager.delegate = self// allows weathermanager to notify viewcontroller of data
+
         SearchTextField.delegate = self// allows textfield to notify viewcontroller
     }
 
@@ -55,6 +57,20 @@ class WeatherViewController: UIViewController, UITextFieldDelegate { // allows v
         }
         
         SearchTextField.text = ""// clears searchtextfield after search/go is pressed 
+    }
+    
+    func didUpdateWeather(weather: WeatherModel) {
+        print(weather.temperature)
+        DispatchQueue.main.async {//needed to put method on main thread otherwise app freezes
+            self.temperatureLabel.text = weather.temperatureString
+            self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+            self.cityLabel.text = weather.cityName
+        }
+        
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
     }
 }
 
