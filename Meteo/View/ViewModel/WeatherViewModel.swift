@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate , CLLocationManagerDelegate{ //UITextfieldDelegate allows validation of text in textfield
+class WeatherViewModel: UIViewController, UITextFieldDelegate, WeatherManagerDelegate , CLLocationManagerDelegate{ //UITextfieldDelegate allows validation of text in textfield
 
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
