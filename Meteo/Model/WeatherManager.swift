@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol WeatherManagerDelegate {//created to be able to send info PARSED by the JSON and converted to strings in the weathermodel to the VC
     func didUpdateWeather(weather: WeatherModel)
@@ -19,6 +20,11 @@ struct WeatherManager {
     
     func fetchWeather(cityName: String) {
         let urlString = "\(weatherUrl)&q=\(cityName)"
+        performRequest(urlString: urlString)
+    }
+    
+    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+         let urlString = "\(weatherUrl)&lat=\(latitude)&lon=\(longitude)"
         performRequest(urlString: urlString)
     }
     
